@@ -1,0 +1,103 @@
+#java file
+
+import java.util.*;
+import java.lang.*;
+
+interface Number
+{
+    public boolean min(int num1,int num2);
+    public boolean max(int num1,int num2);
+}
+
+class Sort implements Number
+{   int arr[];
+ 
+    public boolean min(int num1 , int num2)
+    {
+       return(num1<num2);
+    }
+    
+    public boolean max(int num1 , int num2)
+    {
+       return(num1>num2);
+    }
+    
+    
+public void ascending(int arr[])
+{
+    for(int i=0;i<arr.length;i++)
+    {
+        for(int j=0;j<arr.length-i-1;j++)
+        {
+            if(max(arr[j],arr[j+1]))
+            {
+                int temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+            }
+        }
+    }
+}
+    
+public void descending(int arr[])
+{ 
+    for(int i=0;i<arr.length;i++)
+    {
+        for(int j=0;j<arr.length-i-1;j++)
+        {
+            if(min(arr[j],arr[j+1]))
+            {
+                int temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+            }
+        }
+    }
+    
+}
+}
+
+class demo extends Sort {
+public void create_array()
+{
+    Scanner sc=new Scanner(System.in);
+    
+    System.out.print("Enter length of array");
+    int size=sc.nextInt();
+    int[] arr = new int[size];
+    
+    System.out.print("enter array elements:");
+    for(int i=0;i<size;i++)
+    {
+        arr[i]=sc.nextInt();
+     
+    }
+    
+    System.out.println("ASCENDING ORDER");
+    ascending(arr);
+    for(int i=0;i<arr.length;i++)
+    {
+        System.out.print(arr[i] + " ");
+    }
+     System.out.println();
+       
+    System.out.println("DESCENDING ORDER");
+    descending(arr);
+    for(int i=0;i<arr.length;i++)
+    {
+        System.out.print(arr[i] + " ");
+    }
+     System.out.println();
+    }
+}
+
+public class assessment {
+    public static void main(String args[])
+    { 
+        Scanner sc=new Scanner(System.in);
+        demo x =new demo();
+       x.create_array();
+        
+    }
+    
+}
